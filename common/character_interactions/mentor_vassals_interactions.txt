@@ -1,0 +1,285 @@
+mentor_vassals_reeducate_interaction = {
+	category = interaction_category_vassal
+	icon = icon_vassal
+	common_interaction = yes
+
+	desc = mentor_vassals_reeducate_interaction_desc
+	auto_accept = yes
+
+	is_shown = {
+		scope:actor != scope:recipient
+		scope:actor = {
+			is_ruler = yes
+			is_landed = yes
+			is_adult = yes
+		}
+		scope:recipient = {
+			is_alive = yes
+			is_adult = yes
+			OR = {
+				is_vassal_or_below_of = scope:actor
+				is_child_of = scope:actor
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		scope:recipient = {
+			custom_tooltip = {
+				text = mv_target_must_be_child_or_vassal_tt
+				OR = {
+					is_vassal_or_below_of = scope:actor
+					is_child_of = scope:actor
+				}
+			}
+			custom_tooltip = {
+				text = mv_target_must_not_be_on_cooldown_tt
+				NOT = { has_character_flag = mv_recently_reeducated }
+			}
+			custom_tooltip = {
+				text = mv_target_must_have_education_track_tt
+				mv_has_any_education_track = yes
+			}
+			custom_tooltip = {
+				text = mv_must_share_education_track_tt
+				mv_same_education_track_as_actor = yes
+			}
+			custom_tooltip = {
+				text = mv_target_must_be_lower_than_you_tt
+				mv_can_be_raised_by_actor = yes
+			}
+		}
+
+		scope:actor = {
+			custom_tooltip = {
+				text = mv_actor_must_have_education_track_tt
+				mv_has_any_education_track = yes
+			}
+			custom_tooltip = {
+				text = mv_actor_must_have_enough_prestige_tt
+				OR = {
+					AND = {
+						highest_held_title_tier = tier_hegemony
+						prestige >= 1000
+					}
+					AND = {
+						highest_held_title_tier = tier_empire
+						prestige >= 800
+					}
+					AND = {
+						highest_held_title_tier = tier_kingdom
+						prestige >= 600
+					}
+					AND = {
+						highest_held_title_tier = tier_duchy
+						prestige >= 400
+					}
+					AND = {
+						OR = {
+							highest_held_title_tier = tier_county
+							highest_held_title_tier = tier_barony
+						}
+						prestige >= 200
+					}
+				}
+			}
+		}
+	}
+
+	is_valid = {
+		scope:recipient = {
+			mv_is_valid_reeducation_target = yes
+		}
+
+		scope:actor = {
+			OR = {
+				AND = {
+					highest_held_title_tier = tier_hegemony
+					prestige >= 1000
+				}
+				AND = {
+					highest_held_title_tier = tier_empire
+					prestige >= 800
+				}
+				AND = {
+					highest_held_title_tier = tier_kingdom
+					prestige >= 600
+				}
+				AND = {
+					highest_held_title_tier = tier_duchy
+					prestige >= 400
+				}
+				AND = {
+					OR = {
+						highest_held_title_tier = tier_county
+						highest_held_title_tier = tier_barony
+					}
+					prestige >= 200
+				}
+			}
+		}
+	}
+
+	on_accept = {
+		scope:actor = {
+			mv_pay_reeducation_prestige_cost = yes
+		}
+
+		scope:recipient = {
+			mv_upgrade_education_one_step = yes
+			add_character_flag = {
+				flag = mv_recently_reeducated
+				years = 3
+			}
+			mv_add_track_lifestyle_xp = yes
+			add_opinion = {
+				target = scope:actor
+				modifier = mv_recently_mentored_opinion
+			}
+		}
+	}
+
+	ai_will_do = {
+		base = 0
+	}
+}
+
+mentor_vassals_reeducate_primary_heir_interaction = {
+	category = interaction_category_vassal
+	icon = icon_vassal
+	common_interaction = yes
+
+	desc = mentor_vassals_reeducate_primary_heir_interaction_desc
+	auto_accept = yes
+
+	is_shown = {
+		scope:actor != scope:recipient
+		scope:actor = {
+			is_ruler = yes
+			is_landed = yes
+			is_adult = yes
+		}
+		scope:recipient = {
+			is_alive = yes
+			is_adult = yes
+			is_primary_heir_of = scope:actor
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		scope:recipient = {
+			custom_tooltip = {
+				text = mv_target_must_be_primary_heir_tt
+				is_primary_heir_of = scope:actor
+			}
+			custom_tooltip = {
+				text = mv_target_must_not_be_on_cooldown_tt
+				NOT = { has_character_flag = mv_recently_reeducated }
+			}
+			custom_tooltip = {
+				text = mv_target_must_have_education_track_tt
+				mv_has_any_education_track = yes
+			}
+			custom_tooltip = {
+				text = mv_must_share_education_track_tt
+				mv_same_education_track_as_actor = yes
+			}
+			custom_tooltip = {
+				text = mv_target_must_be_lower_than_you_tt
+				mv_can_be_raised_by_actor = yes
+			}
+		}
+
+		scope:actor = {
+			custom_tooltip = {
+				text = mv_actor_must_have_education_track_tt
+				mv_has_any_education_track = yes
+			}
+			custom_tooltip = {
+				text = mv_actor_must_have_enough_prestige_heir_tt
+				OR = {
+					AND = {
+						highest_held_title_tier = tier_hegemony
+						prestige >= 5000
+					}
+					AND = {
+						highest_held_title_tier = tier_empire
+						prestige >= 4000
+					}
+					AND = {
+						highest_held_title_tier = tier_kingdom
+						prestige >= 3000
+					}
+					AND = {
+						highest_held_title_tier = tier_duchy
+						prestige >= 2000
+					}
+					AND = {
+						OR = {
+							highest_held_title_tier = tier_county
+							highest_held_title_tier = tier_barony
+						}
+						prestige >= 1000
+					}
+				}
+			}
+		}
+	}
+
+	is_valid = {
+		scope:recipient = {
+			mv_is_valid_heir_reeducation_target = yes
+		}
+
+		scope:actor = {
+			OR = {
+				AND = {
+					highest_held_title_tier = tier_hegemony
+					prestige >= 5000
+				}
+				AND = {
+					highest_held_title_tier = tier_empire
+					prestige >= 4000
+				}
+				AND = {
+					highest_held_title_tier = tier_kingdom
+					prestige >= 3000
+				}
+				AND = {
+					highest_held_title_tier = tier_duchy
+					prestige >= 2000
+				}
+				AND = {
+					OR = {
+						highest_held_title_tier = tier_county
+						highest_held_title_tier = tier_barony
+					}
+					prestige >= 1000
+				}
+			}
+		}
+	}
+
+	on_accept = {
+		scope:actor = {
+			mv_pay_heir_reeducation_prestige_cost = yes
+		}
+
+		scope:recipient = {
+			mv_upgrade_education_to_actor_level = yes
+			add_character_flag = {
+				flag = mv_recently_reeducated
+				years = 3
+			}
+			mv_add_track_lifestyle_xp = yes
+			add_opinion = {
+				target = scope:actor
+				modifier = mv_recently_mentored_opinion
+			}
+		}
+	}
+
+	ai_will_do = {
+		base = 0
+	}
+}

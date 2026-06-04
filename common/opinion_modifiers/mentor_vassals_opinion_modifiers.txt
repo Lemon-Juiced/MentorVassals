@@ -1,0 +1,4 @@
+mv_recently_mentored_opinion = {
+	opinion = 15
+	years = 5
+}

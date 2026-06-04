@@ -1,0 +1,368 @@
+mv_has_martial_education_track = {
+	OR = {
+		has_trait = education_martial_1
+		has_trait = education_martial_2
+		has_trait = education_martial_3
+		has_trait = education_martial_4
+		has_trait = education_martial_5
+	}
+}
+
+mv_has_martial_prowess_education_track = {
+	OR = {
+		has_trait = education_martial_prowess_1
+		has_trait = education_martial_prowess_2
+		has_trait = education_martial_prowess_3
+		has_trait = education_martial_prowess_4
+	}
+}
+
+mv_has_stewardship_education_track = {
+	OR = {
+		has_trait = education_stewardship_1
+		has_trait = education_stewardship_2
+		has_trait = education_stewardship_3
+		has_trait = education_stewardship_4
+		has_trait = education_stewardship_5
+	}
+}
+
+mv_has_diplomacy_education_track = {
+	OR = {
+		has_trait = education_diplomacy_1
+		has_trait = education_diplomacy_2
+		has_trait = education_diplomacy_3
+		has_trait = education_diplomacy_4
+		has_trait = education_diplomacy_5
+	}
+}
+
+mv_has_intrigue_education_track = {
+	OR = {
+		has_trait = education_intrigue_1
+		has_trait = education_intrigue_2
+		has_trait = education_intrigue_3
+		has_trait = education_intrigue_4
+		has_trait = education_intrigue_5
+	}
+}
+
+mv_has_learning_education_track = {
+	OR = {
+		has_trait = education_learning_1
+		has_trait = education_learning_2
+		has_trait = education_learning_3
+		has_trait = education_learning_4
+		has_trait = education_learning_5
+	}
+}
+
+mv_has_republican_knowledge_education_track = {
+	OR = {
+		has_trait = education_republican_knowledge_1
+		has_trait = education_republican_knowledge_2
+		has_trait = education_republican_knowledge_3
+		has_trait = education_republican_knowledge_4
+	}
+}
+
+mv_has_any_education_track = {
+	OR = {
+		mv_has_martial_education_track = yes
+		mv_has_martial_prowess_education_track = yes
+		mv_has_stewardship_education_track = yes
+		mv_has_diplomacy_education_track = yes
+		mv_has_intrigue_education_track = yes
+		mv_has_learning_education_track = yes
+		mv_has_republican_knowledge_education_track = yes
+	}
+}
+
+# This trigger is evaluated in recipient scope.
+mv_same_education_track_as_actor = {
+	OR = {
+		AND = {
+			scope:actor = { mv_has_martial_education_track = yes }
+			mv_has_martial_education_track = yes
+		}
+		AND = {
+			scope:actor = { mv_has_martial_prowess_education_track = yes }
+			mv_has_martial_prowess_education_track = yes
+		}
+		AND = {
+			scope:actor = { mv_has_stewardship_education_track = yes }
+			mv_has_stewardship_education_track = yes
+		}
+		AND = {
+			scope:actor = { mv_has_diplomacy_education_track = yes }
+			mv_has_diplomacy_education_track = yes
+		}
+		AND = {
+			scope:actor = { mv_has_intrigue_education_track = yes }
+			mv_has_intrigue_education_track = yes
+		}
+		AND = {
+			scope:actor = { mv_has_learning_education_track = yes }
+			mv_has_learning_education_track = yes
+		}
+		AND = {
+			scope:actor = { mv_has_republican_knowledge_education_track = yes }
+			mv_has_republican_knowledge_education_track = yes
+		}
+	}
+}
+
+# This trigger is evaluated in recipient scope and checks if actor can teach one tier.
+mv_can_be_raised_by_actor = {
+	OR = {
+		AND = {
+			has_trait = education_martial_1
+			scope:actor = {
+				OR = {
+					has_trait = education_martial_2
+					has_trait = education_martial_3
+					has_trait = education_martial_4
+					has_trait = education_martial_5
+				}
+			}
+		}
+		AND = {
+			has_trait = education_martial_2
+			scope:actor = {
+				OR = {
+					has_trait = education_martial_3
+					has_trait = education_martial_4
+					has_trait = education_martial_5
+				}
+			}
+		}
+		AND = {
+			has_trait = education_martial_3
+			scope:actor = {
+				OR = {
+					has_trait = education_martial_4
+					has_trait = education_martial_5
+				}
+			}
+		}
+		AND = {
+			has_trait = education_martial_4
+			scope:actor = { has_trait = education_martial_5 }
+		}
+
+		AND = {
+			has_trait = education_martial_prowess_1
+			scope:actor = {
+				OR = {
+					has_trait = education_martial_prowess_2
+					has_trait = education_martial_prowess_3
+					has_trait = education_martial_prowess_4
+				}
+			}
+		}
+		AND = {
+			has_trait = education_martial_prowess_2
+			scope:actor = {
+				OR = {
+					has_trait = education_martial_prowess_3
+					has_trait = education_martial_prowess_4
+				}
+			}
+		}
+		AND = {
+			has_trait = education_martial_prowess_3
+			scope:actor = { has_trait = education_martial_prowess_4 }
+		}
+
+		AND = {
+			has_trait = education_stewardship_1
+			scope:actor = {
+				OR = {
+					has_trait = education_stewardship_2
+					has_trait = education_stewardship_3
+					has_trait = education_stewardship_4
+					has_trait = education_stewardship_5
+				}
+			}
+		}
+		AND = {
+			has_trait = education_stewardship_2
+			scope:actor = {
+				OR = {
+					has_trait = education_stewardship_3
+					has_trait = education_stewardship_4
+					has_trait = education_stewardship_5
+				}
+			}
+		}
+		AND = {
+			has_trait = education_stewardship_3
+			scope:actor = {
+				OR = {
+					has_trait = education_stewardship_4
+					has_trait = education_stewardship_5
+				}
+			}
+		}
+		AND = {
+			has_trait = education_stewardship_4
+			scope:actor = { has_trait = education_stewardship_5 }
+		}
+
+		AND = {
+			has_trait = education_diplomacy_1
+			scope:actor = {
+				OR = {
+					has_trait = education_diplomacy_2
+					has_trait = education_diplomacy_3
+					has_trait = education_diplomacy_4
+					has_trait = education_diplomacy_5
+				}
+			}
+		}
+		AND = {
+			has_trait = education_diplomacy_2
+			scope:actor = {
+				OR = {
+					has_trait = education_diplomacy_3
+					has_trait = education_diplomacy_4
+					has_trait = education_diplomacy_5
+				}
+			}
+		}
+		AND = {
+			has_trait = education_diplomacy_3
+			scope:actor = {
+				OR = {
+					has_trait = education_diplomacy_4
+					has_trait = education_diplomacy_5
+				}
+			}
+		}
+		AND = {
+			has_trait = education_diplomacy_4
+			scope:actor = { has_trait = education_diplomacy_5 }
+		}
+
+		AND = {
+			has_trait = education_intrigue_1
+			scope:actor = {
+				OR = {
+					has_trait = education_intrigue_2
+					has_trait = education_intrigue_3
+					has_trait = education_intrigue_4
+					has_trait = education_intrigue_5
+				}
+			}
+		}
+		AND = {
+			has_trait = education_intrigue_2
+			scope:actor = {
+				OR = {
+					has_trait = education_intrigue_3
+					has_trait = education_intrigue_4
+					has_trait = education_intrigue_5
+				}
+			}
+		}
+		AND = {
+			has_trait = education_intrigue_3
+			scope:actor = {
+				OR = {
+					has_trait = education_intrigue_4
+					has_trait = education_intrigue_5
+				}
+			}
+		}
+		AND = {
+			has_trait = education_intrigue_4
+			scope:actor = { has_trait = education_intrigue_5 }
+		}
+
+		AND = {
+			has_trait = education_learning_1
+			scope:actor = {
+				OR = {
+					has_trait = education_learning_2
+					has_trait = education_learning_3
+					has_trait = education_learning_4
+					has_trait = education_learning_5
+				}
+			}
+		}
+		AND = {
+			has_trait = education_learning_2
+			scope:actor = {
+				OR = {
+					has_trait = education_learning_3
+					has_trait = education_learning_4
+					has_trait = education_learning_5
+				}
+			}
+		}
+		AND = {
+			has_trait = education_learning_3
+			scope:actor = {
+				OR = {
+					has_trait = education_learning_4
+					has_trait = education_learning_5
+				}
+			}
+		}
+		AND = {
+			has_trait = education_learning_4
+			scope:actor = { has_trait = education_learning_5 }
+		}
+
+		AND = {
+			has_trait = education_republican_knowledge_1
+			scope:actor = {
+				OR = {
+					has_trait = education_republican_knowledge_2
+					has_trait = education_republican_knowledge_3
+					has_trait = education_republican_knowledge_4
+				}
+			}
+		}
+		AND = {
+			has_trait = education_republican_knowledge_2
+			scope:actor = {
+				OR = {
+					has_trait = education_republican_knowledge_3
+					has_trait = education_republican_knowledge_4
+				}
+			}
+		}
+		AND = {
+			has_trait = education_republican_knowledge_3
+			scope:actor = { has_trait = education_republican_knowledge_4 }
+		}
+	}
+}
+
+# Full recipient gate; evaluated in recipient scope.
+mv_is_valid_reeducation_target = {
+	is_adult = yes
+	is_alive = yes
+	OR = {
+		is_vassal_or_below_of = scope:actor
+		is_child_of = scope:actor
+	}
+	NOT = { has_character_flag = mv_recently_reeducated }
+	mv_has_any_education_track = yes
+	scope:actor = { mv_has_any_education_track = yes }
+	mv_same_education_track_as_actor = yes
+	mv_can_be_raised_by_actor = yes
+}
+
+# Full recipient gate for primary-heir catch-up interaction.
+mv_is_valid_heir_reeducation_target = {
+	is_adult = yes
+	is_alive = yes
+	is_primary_heir_of = scope:actor
+	NOT = { has_character_flag = mv_recently_reeducated }
+	mv_has_any_education_track = yes
+	scope:actor = { mv_has_any_education_track = yes }
+	mv_same_education_track_as_actor = yes
+	mv_can_be_raised_by_actor = yes
+}

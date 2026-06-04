@@ -1,0 +1,19 @@
+﻿l_english:
+ mentor_vassals_reeducate_interaction:0 "Re-Educate Subject"
+ mentor_vassals_reeducate_interaction_desc:0 "Personally mentor this adult child or vassal to raise their education by one tier in your shared discipline."
+ mentor_vassals_reeducate_primary_heir_interaction:0 "Re-Educate Primary Heir"
+ mentor_vassals_reeducate_primary_heir_interaction_desc:0 "Give your primary heir intensive tutelage, raising their education to match your own tier in your shared discipline."
+ mv_target_must_be_child_or_vassal_tt:0 "Target must be your adult child or vassal."
+ mv_target_must_be_primary_heir_tt:0 "Target must be your primary heir."
+ mv_target_must_not_be_on_cooldown_tt:0 "Target has not been re-educated in the last 3 years."
+ mv_target_must_have_education_track_tt:0 "Target must have a valid education track trait."
+ mv_must_share_education_track_tt:0 "You and the target must share the same education track."
+ mv_target_must_be_lower_than_you_tt:0 "Target's education tier must be lower than yours."
+ mv_actor_must_have_education_track_tt:0 "You must have a valid education track trait."
+ mv_actor_must_have_enough_prestige_tt:0 "You need enough prestige for your current rank."
+ mv_actor_must_have_enough_prestige_heir_tt:0 "You need enough prestige (1000 x your highest title level)."
+ mv_recently_reeducated:0 "Recently Re-Educated"
+ mv_recently_reeducated_flag:0 "Recently Re-Educated"
+ mv_recently_mentored_opinion:0 "Personally Mentored"
+
+
