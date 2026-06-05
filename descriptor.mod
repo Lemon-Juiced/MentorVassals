@@ -6,4 +6,5 @@ tags={
 	"Balance"
 }
 name="Mentor Vassals"
-supported_version="1.19.0.6"
+picture="thumbnail.png"
+supported_version="1.19.*"
